@@ -9,7 +9,7 @@ body{
 	font-family:"Segoue",sans-serif;
 	line-height:1.6em;
 	color:#666;
-	background:#e1e1e1 url(../img/creampaper.png);
+	background:#e1e1e1 url(../img/creame.jpg);
 	font-size:14px;
 	
 }
@@ -46,6 +46,17 @@ header h1{
 header span{
 	color:#dd2826;
 	}
+
+#Youtube{
+	position:relative;
+	margin:10px 0 0 0;
+	padding-top: 0px;
+	height: 30px;
+	width: 30px;
+	background: url(img/Youtube.png) 0px 0;
+	
+
+}
 	
 section{
 

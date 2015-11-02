@@ -3,15 +3,28 @@
 	<head>
 		<title>SearchVidz</title>
 		<link rel="stylesheet" href="css/style.css">
-		
+		<link rel="stylesheet" href="css/jquery.fancybox-buttons.css">
+		<link rel="stylesheet" href="css/jquery.fancybox-thumbs.css">
+		<link rel="stylesheet" href="css/jquery.fancybox.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/script.js"></script>
+		<script src="js/jquery.fancybox-buttons.js"></script>
+		<script src="js/jquery.fancybox-media.js"></script>
+		<script src="js/jquery.fancybox-thumbs.js"></script>
+		<script src="js/jquery.fancybox.pack.js"></script>
+		<script>
+		
+			$(document).ready(function(){
+				$(".fancybox").fancybox();
+				});
+		</script>
+				
 	</head>
 	<body>
 		<div id="container">
 			<header>
-				<h1>Search<span> Video</span></h1>
-				<p>Search all Youtube videos</p>
+				<h1>Search<span> <img id="Youtube" src="img/Youtube.png"> Video</span></h1>
+				<p>This is a Youtube Video Search Engine</p>
 			</header>
 			<section>
 				<form id="search-form" name="search-form" onsubmit="return search()">

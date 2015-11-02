@@ -127,7 +127,7 @@ function getOutput(item){
 	'<img src="'+thumb+'">'+
 	'</div>'+
 	'<div class="list-right">' +
-	'<h3>'+title+'</h3>'+
+	'<h3><a class="fancybox fancybox.iframe" href="http://www.youtube.com/embed/'+videoId+'">'+title+'</a></h3>'+
 	'<small>By <span class="cTitle">'+channelTitle+'</span> on '+videoData+'</small>'+
 	'<p>'+description+'</p>'+
 	'</div>' +
@@ -139,6 +139,124 @@ function getOutput(item){
 	
 
 }
+
+
+//next page
+function nextPage(){
+	var token = $('#next-button').data('token');
+	var q     = $('#next-button').data('query');
+//copy from search function
+//clear result
+	$('#results').html(' ');
+	$('#buttons').html(' ');
+	
+//get form input
+	q = $('#query').val();	
+	
+	
+	//get method
+	$.get(
+		"https://www.googleapis.com/youtube/v3/search",{
+		
+			part: 'snippet, id',
+			q: q,
+			pageToken: token,
+			type:'video',
+			key: 'AIzaSyA6UI6PrZIZZpxhbPwFIPjKALfxu5MhB8s'},
+			function(data){
+				
+				var nextPageToken = data.nextPageToken;
+				var prevPageToken = data.prevPageToken;
+				
+				console.log(data);
+				
+				
+				//loop through the item
+				$.each(data.items, function(i, item){
+					//Get Output
+					var output = getOutput(item);
+					
+					//Display Results
+					$('#results').append(output);
+									
+				});
+				
+				var buttons = getButtons(prevPageToken,nextPageToken);
+				
+				$('#buttons').append(buttons)
+
+				
+			
+			}
+	
+	
+	);
+
+
+
+
+
+}
+
+
+//prev page
+function prevPage(){
+	var token = $('#prev-button').data('token');
+	var q     = $('#prev-button').data('query');
+//copy from search function
+//clear result
+	$('#results').html(' ');
+	$('#buttons').html(' ');
+	
+//get form input
+	q = $('#query').val();	
+	
+	
+	//get method
+	$.get(
+		"https://www.googleapis.com/youtube/v3/search",{
+		
+			part: 'snippet, id',
+			q: q,
+			pageToken: token,
+			type:'video',
+			key: 'AIzaSyA6UI6PrZIZZpxhbPwFIPjKALfxu5MhB8s'},
+			function(data){
+				
+				var nextPageToken = data.nextPageToken;
+				var prevPageToken = data.prevPageToken;
+				
+				console.log(data);
+				
+				
+				//loop through the item
+				$.each(data.items, function(i, item){
+					//Get Output
+					var output = getOutput(item);
+					
+					//Display Results
+					$('#results').append(output);
+									
+				});
+				
+				var buttons = getButtons(prevPageToken,nextPageToken);
+				
+				$('#buttons').append(buttons)
+
+				
+			
+			}
+	
+	
+	);
+
+
+
+
+
+}
+
+
 //Build the buttons
 function getButtons(prevPageToken, nextPageToken){
 	if(!prevPageToken){
