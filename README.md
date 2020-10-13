@@ -1,7 +1,4 @@
 # YouTube Video Search Engine
-
-You can search all the YouTube video on this website
-
 ### The web UI
 ![](https://github.com/sicheng-duke/SearchEngine/blob/master/Search/WebUI.png)
 
